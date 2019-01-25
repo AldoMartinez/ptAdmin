@@ -15,6 +15,7 @@ target 'ptAdmin' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
+  pod 'FirebaseUI'
 
   pod 'LBTAComponents'
   pod 'JGProgressHUD'

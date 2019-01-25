@@ -24,11 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Database.database().isPersistenceEnabled = true
         UINavigationBar.appearance().barTintColor = UIColor(displayP3Red: 29.0/255.0, green: 123.0/255.0, blue: 193.0/255.0, alpha: 1.0)
-        let attributes = [
+       let attributes = [
             NSAttributedString.Key.strokeColor: UIColor.black,
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth: -3.0] as [NSAttributedString.Key : Any]
+            NSAttributedString.Key.foregroundColor: UIColor.white] as [NSAttributedString.Key : Any]
+//            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+//            NSAttributedString.Key.strokeWidth: -3.0] as [NSAttributedString.Key : Any]
         UINavigationBar.appearance().titleTextAttributes = attributes
         UINavigationBar.appearance().tintColor = UIColor.white
         

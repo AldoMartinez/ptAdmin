@@ -20,6 +20,8 @@ class ventaActualController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet var ventaTotal: UILabel!
     
+    // MARK: Properties
+    
     var sumaVenta:Int = 0
     var handle: DatabaseHandle?
     var handleUpdate: DatabaseHandle?
@@ -46,8 +48,6 @@ class ventaActualController: UIViewController, UITableViewDelegate, UITableViewD
             if let user = user{
                 let usuarioNombre = user.displayName
                 let usuarioEmail = user.email
-                print(usuarioNombre!)
-                print(usuarioEmail!)
             }
         }else {
         }

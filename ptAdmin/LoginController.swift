@@ -13,11 +13,26 @@ import FacebookCore
 import FacebookLogin
 import FirebaseAuth
 import JGProgressHUD
+import FirebaseUI
 
 
 class LoginController: UIViewController {
     @IBOutlet weak var backgroundImage:UIImageView!
     @IBOutlet weak var tituloApp: UILabel!
+    
+    @IBAction func correoLoginButton(_ sender: UIButton) {
+        let authUI = FUIAuth.defaultAuthUI()
+        
+        guard authUI != nil else{
+            return
+        }
+        
+        authUI?.delegate = self
+        
+        let authViewController = authUI!.authViewController()
+        present(authViewController, animated: true, completion: nil)
+    }
+
     
     // Crea un mensaje flotante temporal
     let hud: JGProgressHUD = {
@@ -85,17 +100,30 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
-//        loginButton.center = view.center
-//
-//        view.addSubview(loginButton)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+
         view.addSubview(signInWithFacebookButton)
         if #available(iOS 11.0, *) {
-            signInWithFacebookButton.anchor(nil, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 50)
+            signInWithFacebookButton.anchor(nil, left: view.safeAreaLayoutGuide.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.rightAnchor, topConstant: 16, leftConstant: 16, bottomConstant: 30, rightConstant: 16, widthConstant: 0, heightConstant: 50)
         } else {
             // Fallback on earlier versions
         }
     }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
-    
+}
+
+extension LoginController: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        
+        if error != nil {
+            return
+        }
+        
+        performSegue(withIdentifier: "is", sender: self)
+        
+    }
 }
