@@ -32,6 +32,7 @@
 		432A972C20DE0A3A00DCC6E4 /* ventaDiaHistorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ventaDiaHistorialController.swift; sourceTree = "<group>"; };
 		4351111D20F1745F00AEBC7D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		43557A7221F5083E00B6B41D /* agregarVentaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = agregarVentaController.swift; sourceTree = "<group>"; };
+		4367B41F21FBCBF5005DA584 /* ptAdmin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ptAdmin.entitlements; sourceTree = "<group>"; };
 		437490E820F59EEB00F809FE /* registroCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registroCell.swift; sourceTree = "<group>"; };
 		437490EA20F5A7BC00F809FE /* Venta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venta.swift; sourceTree = "<group>"; };
 		4387A48620D0CA4B007AD059 /* ptAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ptAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +86,7 @@
 		4387A48820D0CA4B007AD059 /* ptAdmin */ = {
 			isa = PBXGroup;
 			children = (
+				4367B41F21FBCBF5005DA584 /* ptAdmin.entitlements */,
 				43E83B7C212B78750044B1A4 /* GoogleService-Info.plist */,
 				4387A48920D0CA4B007AD059 /* AppDelegate.swift */,
 				4387A48B20D0CA4B007AD059 /* ViewController.swift */,
@@ -160,6 +162,11 @@
 					4387A48520D0CA4B007AD059 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -482,6 +489,7 @@
 			baseConfigurationReference = E6336205E5ACD6BF3CD08EB6 /* Pods-ptAdmin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ptAdmin/ptAdmin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9C6JF5ZCK9;
 				INFOPLIST_FILE = ptAdmin/Info.plist;
@@ -502,6 +510,7 @@
 			baseConfigurationReference = 8BE484E776209576E685BD27 /* Pods-ptAdmin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ptAdmin/ptAdmin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9C6JF5ZCK9;
 				INFOPLIST_FILE = ptAdmin/Info.plist;

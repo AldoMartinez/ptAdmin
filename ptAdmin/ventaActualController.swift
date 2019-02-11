@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseUI
 import FacebookCore
 import FacebookLogin
 import JGProgressHUD
@@ -21,6 +22,11 @@ class ventaActualController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var ventaTotal: UILabel!
     
     // MARK: Properties
+    fileprivate var _refHandle: DatabaseHandle!
+    fileprivate var _authHandle: AuthStateDidChangeListenerHandle!
+    var ventas: [DataSnapshot]! = []
+    var user: User?
+    var displayName = "Desconocido"
     
     var sumaVenta:Int = 0
     var handle: DatabaseHandle?
@@ -35,6 +41,42 @@ class ventaActualController: UIViewController, UITableViewDelegate, UITableViewD
     var date = Date()
     var fecha:String = ""
     
+    // MARK: Config
+    
+//    func configureAuth() {
+//        let providers: [FUIAuthProvider] = [
+//        FUIFacebookAuth(),
+//        FUIGoogleAuth()
+//        ]
+//        FUIAuth.defaultAuthUI()?.providers = providers
+//        
+//        _authHandle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+//            // refresh table data
+//            self.ventas.removeAll(keepingCapacity: false)
+//            self.myTableSale.reloadData()
+//            
+//            // check if there is a current user
+//            if let activeUser = user {
+//                // check if the current app user is the current FIRUser
+//                if self.user != activeUser {
+//                    self.user = activeUser
+//                    self.signedInStatus(isSignedIn: true)
+//                    let name = user?.displayName ?? ""
+//                    self.displayName = name
+//                }
+//            } else {
+//                // user must sign in
+//                self.signedInStatus(isSignedIn: false)
+//                self.loginSession()
+//            }
+//        })
+//    }
+//    
+//    func configureDatabase() {
+//        ref = Database.database().reference()
+//        _refHandle = ref?.child("<#T##pathString: String##String#>")
+//    }
+//    
     // Crea un mensaje flotante temporal
     let hud: JGProgressHUD = {
         let hud = JGProgressHUD(style: .light)
